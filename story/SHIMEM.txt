@@ -1,0 +1,16 @@
+#  故事模版
+
+name=Test
+
+@move(1,10)->dclick(1)->wait(3)
+
+$$ NOT_MOVE
+
+@move(1,10)->rclick(2)->wait(0)
+
+@move(0,0)->kpd("esc")->wait(1)
+
+@move(1,1)->kp("a")->wait(0)
+
+@move(1,2)->kr("a")->wait(0)
+

@@ -23,7 +23,4 @@ class StoryRunner(object):
 
 
 if __name__ == '__main__':
-
     StoryRunner("SHIMEM.txt").read()
-
-

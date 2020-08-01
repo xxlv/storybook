@@ -17,10 +17,12 @@ from utils.logUtil import Log
 class Story(object):
     event_group = []
 
-    def __init__(self, name):
+    def __init__(self, name=""):
         self.name = name
 
+
     def push(self, event):
+
         if event is not None:
             self.event_group.append(event)
 
@@ -29,19 +31,19 @@ class Story(object):
         Log.log("Start Story [{}]".format(self.name))
         Log.log("-------------------------------------------")
         if condition:
-            while True:
-                if self.event_group is None or self.event_group.__len__() <= 0:
-                    break
-                e = self.event_group.pop()
+            if self.event_group is None or self.event_group.__len__() <= 0:
+                return
+            for e in self.event_group:
                 if e is not None:
                     e.execute(container=self.name)
 
+    def __str__(self):
+        return "Story->{} event[{}]".format(self.name,self.event_group.__len__())
 
 if __name__ == '__main__':
     s = Story("师门任务")
-    s.push(Event(Action(Position(1, 1), ActionEnum.R_CLICK, 3), 1, "Hello"))
+    s.push(Event(Action(Position(1, 1), ActionEnum.R_CLICK, 3), 1, "hello"))
     s.push(Event(Action(Position(2, 1), ActionEnum.R_CLICK, 1), 1))
     s.push(Event(Action(Position(3, 1), ActionEnum.R_CLICK, 2), 1))
     s.push(Event(Action(Position(4, 1), ActionEnum.R_CLICK, 1), 1))
-
     s.start()

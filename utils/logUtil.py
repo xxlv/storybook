@@ -11,6 +11,11 @@ from datetime import datetime
 class Log(object):
 
     @staticmethod
+    def warn(s):
+        dt = datetime.now()
+        print("[{}]  -> {}".format(dt.strftime("%Y-%m-%d %H:%M:%S"), s))
+
+    @staticmethod
     def log(s):
         dt = datetime.now()
         print("[{}]  -> {}".format(dt.strftime("%Y-%m-%d %H:%M:%S"), s))

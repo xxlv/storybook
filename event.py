@@ -9,30 +9,34 @@ from position import Position
 from utils.logUtil import Log
 
 
-class Event(object):
+class Event:
     """
     Position : Event Location
     Action
     TimeWait
     """
-    action_group = []
-
     def push(self, action):
         if action is not None:
             self.action_group.append(action)
 
-    def __init__(self, action, timewait, name=None):
+    def updatename(self, name):
+        self.name = name
+
+    def __init__(self, action=None, timewait=None, name=None):
         self.action = action
         self.timewait = timewait
 
-        if name is None:
+        if name is None and self.action is not None:
             name = "Event-action({})".format(self.action.action_name)
         self.name = name
+        self.action_group = []
 
     def execute(self, container=None):
         start = time.time()
         Log.log("Execute Event {}".format(self))
-        self.action.run(container)
+        if self.action is not None:
+            self.action.run(container)
+
         for act in self.action_group:
             if act is not None:
                 act.run(container)

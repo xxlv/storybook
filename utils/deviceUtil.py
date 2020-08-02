@@ -1,8 +1,7 @@
 #!/usr/bin/python3
 # -*- coding:utf-8-*-
-
 from pynput import keyboard
-from pynput.keyboard import KeyCode
+from pynput.keyboard import KeyCode, Key
 from pynput.mouse import Button, Controller
 from timeUtil import TimeWait
 from logUtil import Log
@@ -17,7 +16,7 @@ B = keyboard.Controller()
 
 
 class Device(object):
-    REAL_DEVICE = False
+    REAL_DEVICE = True
 
     @staticmethod
     def _before():
@@ -31,7 +30,6 @@ class Device(object):
     @staticmethod
     def click(pos, direction, count):
         Device._before()
-
         if pos is None:
             return
 
@@ -76,8 +74,8 @@ class Device(object):
 
         if M is not None:
             M.press(btn)
-            M.release(btn)
             TimeWait.wait(1)
+            M.release(btn)
 
     @staticmethod
     def _key(k):
@@ -86,9 +84,10 @@ class Device(object):
             return
         try:
             if B is not None:
-                k = KeyCode._from_symbol(k)
-                B.press(k)
-                B.release(k)
+                if k in Key.__dict__:
+                    k = Key.__dict__[k]
+                    B.press(k)
+                    B.release(k)
         except KeyError as e:
             print(e)
 

@@ -25,7 +25,6 @@ class Event:
     def __init__(self, action=None, timewait=None, name=None):
         self.action = action
         self.timewait = timewait
-
         if name is None and self.action is not None:
             name = "Event-action({})".format(self.action.action_name)
         self.name = name

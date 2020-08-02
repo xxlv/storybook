@@ -3,3 +3,5 @@ utils/*.pyc
 __pycache__
 utils/__pycache__
 story
+data
+utils/data

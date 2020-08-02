@@ -34,18 +34,27 @@ name=Demo
 
 
 
-@loop(-1,2)
+#@loop(-1,2)
 
-@dclick(935,221,2)->wait(3)->comment(点击左侧的的第一个任务)
+#@dclick(955,189,2)->wait(3)->comment(点击左侧的的第一个任务)
 
+#@$NOT_MOVE
+
+#@dclick(819,401,1)->wait(2)->comment(关闭Tips)
+
+#@dclick(955,189,2)->wait(2)->comment(点击左侧的的第一个任务)
+
+#@dclick(927,723,1)->wait(1)->comment(点击左侧的的第一个任务)
+
+#@dclick(955,189,2)->wait(1)->comment(点击左侧的的第一个任务)
+
+
+#@endloop
+
+
+@loop(-1,10)
+
+@dclick((956,360)->comment(自动战斗)
 
 @endloop
-
-
-#@wait(40)
-
-#@rclick(936,380)->comment("自动战斗")
-
-
-
 

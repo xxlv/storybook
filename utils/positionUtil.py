@@ -73,7 +73,6 @@ class PosUtil(object):
 
         else:
             PosUtil._cut_image(x, w, h, first)
-
             return False
 
 

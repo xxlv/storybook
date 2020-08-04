@@ -11,7 +11,7 @@ from storyparser import StoryParser
 
 
 class StoryRunner(object):
-    BASE_STORY_PATH = "story"
+    BASE_STORY_PATH = "../story"
 
     def __init__(self, name):
         self.name = name
@@ -23,4 +23,4 @@ class StoryRunner(object):
 
 
 if __name__ == '__main__':
-    StoryRunner("SHIMEM.txt").read()
+    StoryRunner("auto_war.txt").read()

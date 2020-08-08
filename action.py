@@ -72,7 +72,8 @@ class Action(object):
         self.metadata = metadata
         return self
 
-    def run(self, container=None):
+    def run(self, container=None, runner=None):
+        Device.RUNNER = runner
         Log.log("[{}]执行Action {}".format(container, self.action_name))
 
         if self.action_enum == ActionEnum.R_CLICK:
@@ -102,7 +103,6 @@ class Action(object):
                 Device.typeof(self.metadata)
 
         if self.action_enum == ActionEnum.CONDITION:
-            # todo 使用引擎
             Log.log("使用条件引擎 [{}]".format(self.metadata))
             NotMoveCondition(self.metadata).waitfor()
 

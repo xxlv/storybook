@@ -32,17 +32,15 @@ class Story(object):
         if event is not None:
             self.event_group.append(event)
 
-    def start(self, condition=True):
+    def start(self, runner, condition=True):
         Log.log("-------------------------------------------")
         Log.log("Start Story [{}]".format(self.name))
         Log.log("-------------------------------------------")
-
         # 开始执行时间
         # 遇到循环条件的话 进行条件逻辑处理
         if condition:
             if self.event_group is None or self.event_group.__len__() <= 0:
                 return
-
             for e in self.event_group:
                 if e is not None:
                     if e.action_group is not None and e.action_group.__len__() > 0:
@@ -88,10 +86,9 @@ class Story(object):
                             TimeWait.wait(self.timewait_loop)
 
                     if not self.record_loop:
-                        e.execute(container=self.name)
+                        e.execute(container=self.name,runner=runner)
 
     def _start_loop(self):
-
         pass
 
     def __str__(self):
@@ -100,10 +97,7 @@ class Story(object):
 
 if __name__ == '__main__':
     s = Story("师门任务")
-
     s.push(Event(Action(Position(1, 1), ActionEnum.R_CLICK, 3), 1, "hello"))
     s.push(Event(Action(Position(2, 1), ActionEnum.R_CLICK, 1), 1))
     s.push(Event(Action(Position(3, 1), ActionEnum.R_CLICK, 2), 1))
     s.push(Event(Action(Position(4, 1), ActionEnum.R_CLICK, 1), 1))
-
-    s.start()

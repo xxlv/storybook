@@ -15,6 +15,7 @@ class Event:
     Action
     TimeWait
     """
+
     def push(self, action):
         if action is not None:
             self.action_group.append(action)
@@ -30,15 +31,15 @@ class Event:
         self.name = name
         self.action_group = []
 
-    def execute(self, container=None):
+    def execute(self, container=None, runner=None):
         start = time.time()
         Log.log("Execute Event {}".format(self))
         if self.action is not None:
-            self.action.run(container)
+            self.action.run(container, runner)
 
         for act in self.action_group:
             if act is not None:
-                act.run(container)
+                act.run(container, runner)
 
         Log.log("[{}] 任务结束,总计消耗时间 {}".format(self.name, int(time.time() - start)))
 

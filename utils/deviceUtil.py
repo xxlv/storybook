@@ -17,6 +17,7 @@ B = keyboard.Controller()
 
 class Device(object):
     REAL_DEVICE = False
+    RUNNER = None
 
     @staticmethod
     def _before():

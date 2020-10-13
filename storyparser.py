@@ -1,17 +1,13 @@
 #!/usr/bin/python3
 # -*- coding:utf-8-*-
 
-from enum import Enum
-from utils.deviceUtil import Device
-from utils.timeUtil import TimeWait
-from utils.logUtil import Log
-from storycmmand import StoryCommand
-from story import Story
-from event import Event
-from action import Action, ActionEnum
-from position import Position
-
 import random
+
+from action import Action, ActionEnum
+from event import Event
+from position import Position
+from story import Story
+from storycmmand import StoryCommand
 
 """
 解析

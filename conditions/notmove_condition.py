@@ -1,10 +1,11 @@
 #!/usr/bin/python3
 # -*- coding:utf-8-*-
+import time
+
 from condition import Condition
 from utils.logUtil import Log
-from utils.timeUtil import TimeWait
 from utils.positionUtil import PosUtil
-import time
+
 
 class NotMoveCondition(Condition):
 

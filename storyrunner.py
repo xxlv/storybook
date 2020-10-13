@@ -9,6 +9,7 @@ StoryRunner
 
 from storyparser import StoryParser
 
+
 class StoryRunner(object):
     def __init__(self, name, context):
         self.name = name
@@ -22,4 +23,4 @@ class StoryRunner(object):
 
 
 if __name__ == '__main__':
-    StoryRunner("auto_war.txt").read()
+    StoryRunner("auto_war.txt", None).read()

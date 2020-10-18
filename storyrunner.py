@@ -23,4 +23,5 @@ class StoryRunner(object):
 
 
 if __name__ == '__main__':
-    StoryRunner("auto_war.txt", None).read()
+    # StoryRunner("auto_war.txt", None).read()
+    pass

@@ -16,8 +16,7 @@ B = keyboard.Controller()
 
 
 class Device(object):
-    REAL_DEVICE = False
-    RUNNER = None
+    REAL_DEVICE = True
 
     @staticmethod
     def _before():
@@ -55,6 +54,11 @@ class Device(object):
         Device._key(key)
 
     @staticmethod
+    def key_not_release(key):
+        Device._before()
+        Device._key_not_release(key)
+
+    @staticmethod
     def _move(pos):
         Device._before()
         Log.log("鼠标移动到 【{}】".format(pos))
@@ -77,6 +81,20 @@ class Device(object):
             M.press(btn)
             TimeWait.wait(1)
             M.release(btn)
+
+    @staticmethod
+    def _key_not_release(k):
+        if not Device.REAL_DEVICE:
+            Log.log("按下键(模拟) 【{}】".format(k))
+            return
+        try:
+            Log.log("按下键 【{}】".format(k))
+            if B is not None:
+                if k in Key.__dict__:
+                    k = Key.__dict__[k]
+                    B.press(k)
+        except KeyError as e:
+            print(e)
 
     @staticmethod
     def _key(k):
